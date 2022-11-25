@@ -10,7 +10,10 @@ public class PlayerMovement : MonoBehaviour
 
     public delegate void PointDelegate();
     public event PointDelegate Point;
-
+    public delegate void GrapeDelegate();
+    //public event GrapeDelegate Grape;
+    public float time = 0;
+    public bool isGame = true;
     void Start()
     {
         
@@ -26,12 +29,18 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(new Vector2(horizontalInput,verticalInput) * moveSpeed * Time.deltaTime);
         //Move the object to XYZ coordinates defined as horizontalInput, 0, and verticalInput respectively.
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Point" && Point != null)
         {
             Point();
+            //Grape();
         }
     }
-  
+
+    /*
+     GameObject children = Instantiate(childrenPrefab, new Vector3(-189, -148, 0), Quaternion.identity) as GameObject;
+     children.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+     */
+
 }
