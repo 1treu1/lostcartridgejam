@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
     public delegate void PointDelegate();
     public event PointDelegate Point;
-    public delegate void GrapeDelegate();
-    //public event GrapeDelegate Grape;
+    //public delegate void PowerDelegate();
+    //public event PowerDelegate Power;
     public float time = 0;
     public bool isGame = true;
     void Start()
@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         transform.Translate(new Vector2(horizontalInput,verticalInput) * moveSpeed * Time.deltaTime);
-        //Move the object to XYZ coordinates defined as horizontalInput, 0, and verticalInput respectively.
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
             Point();
             //Grape();
         }
+
     }
 
     /*

@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 5234859740757878962}
   m_Layer: 0
   m_Name: Grape
-  m_TagString: Point
+  m_TagString: Cherry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

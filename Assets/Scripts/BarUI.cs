@@ -5,31 +5,70 @@ using UnityEngine.UI;
 
 public class BarUI : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement player;
-    public float timeBarPower = 30;
-    private float timer;
+    
     private Image barPower;
+    float time;
+
+    //[SerializeField] public CherryDead cherry;
+    public float timeBarPower = 7;
+    private float timer;
+    bool isCherry;
     // Start is called before the first frame update
+    void OnEnable()
+    {
+        CherryDead.onCherryDead += IsCherry;
+    }
+    
+
     void Start()
     {
         barPower = gameObject.GetComponent<Image>();
-    }
+        barPower.fillAmount = 0.01f;
+        //isCherry = false;
 
-    // Update is called once per frame
+
+    }
     void Update()
     {
-        TimeGame();
+        Debug.Log("Update"+isCherry);
+        if (isCherry == true)
+        {
+            Debug.Log("Hola");
+            TimeGame();
+        }
+    }
+
+    void IsCherry()
+    {
+        Debug.Log("Evento Cherry Activado");
+        isCherry = true;
     }
     void TimeGame()
     {
-        if (player.isGame)
+      
+        barPower.fillAmount = 1;
+        time += Time.deltaTime;
+        timer = timeBarPower - (int)(time % 60);
+        barPower.fillAmount = timer / timeBarPower;
+
+        if (barPower.fillAmount <= 0)
         {
-            player.time += Time.deltaTime;
-            timer = 30 - (int)(player.time % 60);
-
-            barPower.fillAmount = timer / timeBarPower;
-
-            Debug.Log((int)(barPower.fillAmount));
+            barPower.fillAmount = 0.01f;
+            timer = 0;
+            time = 0;
+            isCherry = false;
         }
     }
+
+    private void OnDisable()
+    {
+        CherryDead.onCherryDead -= IsCherry;
+    }
+
+
+
+    // Update is called once per frame
+
+
+
 }
