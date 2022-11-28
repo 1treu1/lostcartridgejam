@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - Canvas
   - Cherry
+  - PowerUp
+  - Jail
   layers:
   - Default
   - TransparentFX

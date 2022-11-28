@@ -12,7 +12,7 @@ public class BarUI : MonoBehaviour
     //[SerializeField] public CherryDead cherry;
     public float timeBarPower = 7;
     private float timer;
-    bool isCherry;
+    public bool isCherry;
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -30,17 +30,17 @@ public class BarUI : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log("Update"+isCherry);
+        //Debug.Log("Update "+isCherry);
         if (isCherry == true)
         {
-            Debug.Log("Hola");
+            //Debug.Log("Hola");
             TimeGame();
         }
     }
 
     void IsCherry()
     {
-        Debug.Log("Evento Cherry Activado");
+        //Debug.Log("Evento Cherry Activado");
         isCherry = true;
     }
     void TimeGame()

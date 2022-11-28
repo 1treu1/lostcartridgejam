@@ -5,7 +5,6 @@ using UnityEngine;
 //[RequireComponent(typeof(PlayerMovement))]
 public class GrapeDead : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement player;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +15,15 @@ public class GrapeDead : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.CompareTag("Player") || collision.CompareTag("PowerUp"))
+        {
+            
+
+
+            Destroy(gameObject);
+            //isCherry = true;
+
+        }
     }
     void GrapeDestroy()
     {

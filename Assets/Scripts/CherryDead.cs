@@ -9,7 +9,12 @@ public class CherryDead : MonoBehaviour
     public bool isCherry;
     public delegate void OnCherryDead();
     public static event OnCherryDead onCherryDead;
-
+    AudioSource audioSource;
+    public AudioClip hitsound;
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void Start()
     {
         isCherry = false;
@@ -25,7 +30,7 @@ public class CherryDead : MonoBehaviour
         {
             onCherryDead?.Invoke();
 
-
+            audioSource.PlayOneShot(hitsound);
             Destroy(gameObject);
             //isCherry = true;
 

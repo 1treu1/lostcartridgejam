@@ -24,7 +24,7 @@ public class ScoreUI : MonoBehaviour
     
     void Score()
     {
-        i += 1;
+        i += 10;
         //Debug.Log("Score = 1");
         //Destroy(gameObject);
         scoreText.text = i.ToString();
